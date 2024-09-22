@@ -1,0 +1,240 @@
+E:\project\Master Django OMR>python manage.py 
+shell
+python: can't open file 'E:\\project\\Master Django OMR\\manage.py': [Errno 2] No such file 
+or directory
+
+E:\project\Master Django OMR>cd Django_OMR    
+     
+E:\project\Master Django OMR\Django_OMR>python manage.py shell
+Python 3.12.4 (tags/v3.12.4:8e8a4ba, Jun  6 2024, 19:30:16) [MSC v.1940 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from omr.seed import *
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+ModuleNotFoundError: No module named 'omr'
+>>> from OMR.seed import *
+>>> exit()
+
+E:\project\Master Django OMR\Django_OMR>python manage.py createsuperuser
+System check identified some issues:
+
+WARNINGS:
+OMR.Student.student_contact: (fields.W122) 'max_length' is ignored when used with IntegerField.
+        HINT: Remove 'max_length' from field
+Username (leave blank to use 'lenovo'): anujtiwari
+Error: That username is already taken.
+Username (leave blank to use 'lenovo'): anujtiwari1
+Email address: 
+Password: 
+Password (again):
+Superuser created successfully.
+
+E:\project\Master Django OMR\Django_OMR>python manage.py shell
+Python 3.12.4 (tags/v3.12.4:8e8a4ba, Jun  6 2024, 19:30:16) [MSC v.1940 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from OMR.seed import *
+>>> seed_db()
+>>> seed_db()
+>>> querysert= Studen,objects.filter(student_name__startswith= "Anuj")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>       
+NameError: name 'Studen' is not defined. Did you mean: 'Student'?
+>>> querysert= Student.objects.filter(student_name__startswith= "Anuj")
+>>> queryset
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>       
+NameError: name 'queryset' is not defined. Did you mean: 'querysert'?
+>>> querysert 
+<QuerySet [<Student: Anuj Tiwari>]>
+>>> querysert= Student.objects.filter(student_name__startswith= "A")
+>>> querysert
+<QuerySet [<Student: Anuj Tiwari>, <Student: Austin Burke>]>
+>>> queryset= Studen,objects.filter(student_email__startswith= "Anuj")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>       
+NameError: name 'Studen' is not defined. Did you mean: 'Student'?
+>>> queryset= Student.objects.filter(student_elter(student_email__startswith= ".google")
+>>> queryset
+lter(student_email__startswith= ".google")
+>>> queryset                                       _startswith= ".goog
+<QuerySet []>
+>>> queryset= Student.objects.filter(student_email__startswith= ".yahoo")                             _startswith= ".yaho
+>>> queryset
+<QuerySet []>
+>>> queryset= Student.objects.filter(student_contact__startswith= "916t__startswith= "9167971649")
+>>> queryset
+<QuerySet [<Student: Anuj Tiwari>]>
+>>> queryset= Student.objects.filter(student_email__icontain= "an")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\models\query.py", line 1476, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\models\query.py", line 1494, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, 
+kwargs)
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\models\query.py", line 1501, in _filter_or_exclude_inplace   
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\models\sql\query.py", line 1609, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\models\sql\query.py", line 1641, in _add_q
+    child_clause, needed_inner = self.build_filter(                                 ^^^^^^^^^^^^^^^^^^  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\models\sql\query.py", line 1555, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\models\sql\query.py", line 1379, in build_lookup
+    lhs = self.try_transform(lhs, lookup_name)     
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^     
+  File "C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\models\sql\query.py", line 1423, in try_transform
+    raise FieldError(
+django.core.exceptions.FieldError: Unsupported lookup 'icontain' for EmailField or join on the field not permitted, perhaps you meant icontains or contains?
+>>> queryset= Student.objects.filter(student_email__icontains= "an")
+>>> queryset
+<QuerySet [<Student: Anuj Tiwari>, <Student: Kayla 
+Horton>, <Student: Laurie Archer>, <Student: Melissa Bryant>]>
+>>> queryset[0].student_id
+<StudentID: STU_0001>
+>>> queryset[0].id         
+1
+>>> queryset[0].Department\
+... ,
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Student' object has no attribute 'Department'. Did you mean: 'department'?
+>>> queryset[0].department 
+<Department: Computer Science>
+>>> queryset[0].department.department
+'Computer Science'
+>>> queryset= Student.objects.filter(department__department= "Computer Science")
+>>> queryset
+<QuerySet [<Student: Anuj Tiwari>, <Student: Austin Burke>, <Student: Brittany Bush>, <Student: Cole Semith>, <Student: Daniel Brooks>, <Student: Elizabt Smith>, <Student: Daniel Brooks>, <Student: Elit:rzErnest Wyatt>, <Student: Jane Gonzalez>, <Studentaabeth Thompson>, <Student: Erika Collins>, <Stud: ueoshua Smith>, <Student: Kayla Horton>, <Student:  nt: Ernest Wyatt>, <Student: Jane Gonzalez>, <Stt: uLinda Moody>, <Student: Marvin Glenn>, <Student:  dent: Jason Davis>, <Student: Joshua Case>, <Stu < dtudent: Natasha Spencer>, '...(remaining elementsdent: Joshua Smith>, <Student: Kayla Horton>)
+
+<Stu>> queryset= Student.objects.filter(department__department__icontains= "Computer Science")]
+
+>>> queryset.count()
+21
+
+E:\project\Master Django OMR>cd Django_OMR
+
+E:\project\Master Django OMR\Django_OMR>python manage.py shell
+Python 3.12.4 (tags/v3.12.4:8e8a4ba, Jun  6 2024, 19:30:16) [MSC v.1940 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from OMR.models import *
+
+>>> queryset= Student.objects.filter(department__department="Computer Science")
+
+>>> queryset
+<QuerySet [<Student: Anuj Tiwari>, <Student: Austin Burke>, <Student: Brittany Bush>, <Student: Cole Smith>, <Student: Daniel Brooks>, <Student: Elizabeth Thompson>, <Student: Erika Collins>, <Student: Ernest Wyatt>, <Student: Jane Gonzalez>, <Student: Jason Davis>, <Student: Joshua Case>, <Student: Joshua Smith>, <Student: Kayla Horton>, <Student: Laura Wagner>, <Student: Laurie Archer>, 
+<Student: Linda Moody>, <Student: Marvin Glenn>, <Student: Melissa Bryant>, <Student: Mr. Lucas Jones PhD>, <Student: Natasha Spencer>, '...(remaining elements truncated)...']>
+
+>>>queryset.count()
+21
+
+>>> queryset= Student.objects.filter(department__department__in= d)
+
+>>> queryset
+<QuerySet [<Student: Amber Garcia>, <Student: Anuj Tiwari>, <Student: Austin Burke>, <Student: Brittany Bush>, <Student: Cole Smith>, <Student: Daniel Brooks>, <Student: Elizabeth Thompson>, <Student: Erika Collins>, <Student: Ernest Wyatt>, <Student: Gerald Fernandez>, <Student: Jane Gonzalez>, <Student: Jason Davis>, <Student: John Doyle>, <Student: Joshua Case>, <Student: Joshua Smith>, <Student: Kayla Horton>, <Student: Laura Wagner>, <Student: Laurie Archer>, <Student: Linda Moody>, <Student: Lori Gillespie>, '...(remaining elements truncated)...']>
+
+>>> queryset.count()
+25
+
+>>>d= ['Information Technology']
+
+>>> queryset= Student.objects.filter(department__department__in= d)
+
+>>> queryset
+<QuerySet [<Student: Gregory Allen>, <Student: Laura Myers DVM>, <Student: Lauren Ingram>, <Student: Maria Wheeler>, <Student: Richard Nelson>, <Student: Sean Vasquez>]>
+
+>>> queryset.count()
+6
+
+>>> d= [ 'Computer Science', 'Information Technology'] 
+>>> queryset= Student.objects.filter(department__department__in= d) 
+>>> queryset
+<QuerySet [<Student: Amber Garcia>, <Student: Anuj Tiwari>, <Student: Austin Burke>, <Student: Brittany Bush>, <Student: Cole Smith>, <Student: Daniel Brooks>, <Student: Elizabeth Thompson>, <Student: Erika Collins>, <Student: Ernest Wyatt>, <Student: Gerald Fernandez>, <Student: Gregory Allen>, <Student: Jane Gonzalez>, <Student: Jason Davis>, <Student: John Doyle>, <Student: Joshua Case>, <Student: Joshua Smith>, <Student: Kayla Horton>, <Student: Laura Myers DVM>, <Student: Laura Wagner>, <Student: Lauren Ingram>, '...(remaining elements truncated)...']>
+>>> queryset.count()
+31
+>>>queryset= Student.objects.exclude(department__department = "Computer Science")
+>>> queryset
+<QuerySet [<Student: Gregory Allen>, <Student: Laura Myers DVM>, <Student: Lauren Ingram>, <Student: Maria Wheeler>, <Student: Richard Nelson>, <Student: Sean Vasquez>]>
+>>> queryset.count()
+6
+>>>queryset= Student.objects.filter(student_name__icontains = "Anuj")
+>>> queryset.exists()
+True
+
+>>> queryset= Student.objects.all() 
+>>> queryset
+<QuerySet [<Student: Amber Garcia>, <Student: Anuj Tiwari>, <Student: Austin Burke>, <Student: Brittany Bush>, <Student: Cole Smith>, <Student: Daniel Brooks>, <Student: Elizabeth Thompson>, <Student: Erika Collins>, <Student: Ernest Wyatt>, <Student: Gerald Fernandez>, <Student: Gregory Allen>, <Student: Jane Gonzalez>, <Student: Jason Davis>, <Student: John Doyle>, <Student: Joshua Case>, <Student: Joshua Smith>, <Student: Kayla Horton>, <Student: Laura Myers DVM>, <Student: Laura Wagner>, <Student: Lauren Ingram>, '...(remaining elements truncated)...']>
+
+>>>> queryset[0:10]
+<QuerySet [<Student: Amber Garcia>, <Student: Anuj Tiwari>, <Student: Austin Burke>, <Student: Brittany Bush>, <Student: Cole Smith>, <Student: Daniel Brooks>, <Student: Elizabeth Thompson>, <Student: Erika Collins>, <Student: Ernest Wyatt>, <Student: Gerald Fernandez>]>
+
+>>> queryset.values()
+<QuerySet [{'id': 28, 'department_id': 1, 'student_id_id': 28, 'student_name': 'Amber Garcia', 'student_age': 23, 'student_contact': 91936362637404, 'student_email': 'williamskristen@example.com', 'student_address': '463 Leah Crest Apt. 058\nPort Gregory, IL 94900'}, {'id': 1, 'department_id': 1, 'student_id_id': 1, 'student_name': 'Anuj Tiwari', 'student_age': 22, 'student_contact': 9167971649, 'student_email': 'anujtiwari0043@gmail.com', 'student_address': 'Mumbai'}, {'id': 9, 'department_id': 1, 'student_id_id': 9, 'student_name': 'Austin Burke', 'student_age': 25, 'student_contact': 91479461694503, 'student_email': 'kathryn92@example.com', 'student_address': '9531 Fuller Curve\nEwingberg, NV 44712'}, {'id': 15, 'department_id': 1, 'student_id_id': 15, 'student_name': 'Brittany Bush', 'student_age': 22, 'student_contact': 91709824939721, 'student_email': 'rebecca77@example.com', 'student_address': '2955 Erik Mission\nWest Scott, AZ 29924'}, {'id': 18, 'department_id': 1, 'student_id_id': 18, 'student_name': 'Cole Smith', 'student_age': 25, 'student_contact': 
+91633756487965, 'student_email': 'marshallcolin@example.com', 'student_address': 'Unit 8395 Box 8305\nDPO AP 86168'}, {'id': 6, 'department_id': 1, 'student_id_id': 6, 'student_name': 'Daniel Brooks', 'student_age': 25, 'student_contact': 91873847631871, 'student_email': 'kimberlyrichardson@example.org', 'student_address': '87682 Tony Drives\nEast Davidport, VT 77924'}, {'id': 7, 'department_id': 1, 'student_id_id': 7, 'student_name': 'Elizabeth Thompson', 'student_age': 28, 'student_contact': 91883164228632, 'student_email': 'jonesteresa@example.net', 'student_address': '664 Stevens Motorway\nMariaview, LA 43628'}, {'id': 4, 'department_id': 1, 'student_id_id': 4, 'student_name': 'Erika Collins', 'student_age': 20, 'student_contact': 91179039346276, 'student_email': 'joshua32@example.org', 'student_address': '33289 Dominguez Lakes Apt. 822\nPort Markton, HI 76263'}, {'id': 2, 'department_id': 1, 'student_id_id': 2, 'student_name': 'Ernest Wyatt', 'student_age': 28, 'student_contact': 91488205007005, 'student_email': 'lmiller@example.org', 'student_address': 'PSC 3615, Box 3825\nAPO AE 65996'}, {'id': 25, 'department_id': 1, 'student_id_id': 25, 'student_name': 'Gerald Fernandez', 'student_age': 22, 'student_contact': 91472172976315, 'student_email': 'davidwheeler@example.net', 'student_address': '71870 Christopher Greens\nPort Devinbury, OK 26715'}, {'id': 24, 'department_id': 2, 'student_id_id': 24, 'student_name': 'Gregory Allen', 'student_age': 26, 'student_contact': 9161856930557, 'student_email': 'zreyes@example.org', 'student_address': '815 Walton Crossroad Suite 142\nPort Kylechester, PA 15045'}, {'id': 10, 'department_id': 1, 'student_id_id': 10, 'student_name': 'Jane Gonzalez', 'student_age': 28, 'student_contact': 91614573348524, 'student_email': 'bullockrobert@example.net', 'student_address': '14712 Rice Villages Suite 855\nPort Thomas, OK 56855'}, {'id': 14, 'department_id': 1, 'student_id_id': 14, 'student_name': 'Jason Davis', 'student_age': 20, 'student_contact': 91975787315588, 'student_email': 'atkinsgavin@example.com', 'student_address': 'Unit 4055 Box 0131\nDPO AE 56337'}, {'id': 29, 'department_id': 1, 'student_id_id': 29, 'student_name': 'John Doyle', 'student_age': 23, 'student_contact': 91592116416211, 'student_email': 'francisco27@example.net', 'student_address': '314 Vasquez Summit Apt. 048\nLake Regina, NV 24229'}, {'id': 19, 'department_id': 1, 'student_id_id': 19, 'student_name': 'Joshua Case', 'student_age': 22, 'student_contact': 91860237970327, 'student_email': 'william18@example.net', 'student_address': '3413 Darlene Ferry Suite 481\nChapmanville, SC 81443'}, {'id': 
+21, 'department_id': 1, 'student_id_id': 21, 'student_name': 'Joshua Smith', 'student_age': 27, 'student_contact': 91142613572261, 'student_email': 'eduardo92@example.com', 'student_address': 'PSC 0092, Box 9174\nAPO AA 19233'}, {'id': 20, 'department_id': 1, 'student_id_id': 20, 'student_name': 'Kayla Horton', 'student_age': 25, 'student_contact': 91553318019758, 'student_email': 'sandersmatthew@example.net', 'student_address': '59122 Cynthia Lane Apt. 090\nNew Larrymouth, MS 92930'}, {'id': 26, 'department_id': 2, 'student_id_id': 26, 'student_name': 'Laura Myers DVM', 'student_age': 27, 'student_contact': 9166917581050, 'student_email': 'franklopez@example.com', 'student_address': '24233 Moore Spurs Apt. 824\nPort Courtneyport, MT 69595'}, {'id': 3, 'department_id': 1, 'student_id_id': 3, 'student_name': 'Laura Wagner', 'student_age': 20, 'student_contact': 91527571252269, 'student_email': 'emilymccarthy@example.org', 'student_address': '995 Aimee Pass\nPort Steveport, PR 46448'}, {'id': 22, 'department_id': 2, 'student_id_id': 22, 'student_name': 'Lauren Ingram', 'student_age': 24, 'student_contact': 9176140497420, 'student_email': 'jessica02@example.net', 'student_address': '41533 Lopez Trafficway\nNorth Crystal, KY 11719'}, '...(remaining elements
+truncated)...']>
+
+>>>queryset.values()[0]
+{'id': 28, 'department_id': 1, 'student_id_id': 28, 'student_name': 'Amber Garcia', 'student_age': 23, 'student_contact': 91936362637404, 'student_email': 'williamskristen@example.com', 'student_address': '463 Leah Crest Apt. 058\nPort Gregory, IL 94900'}
+
+>>> queryset.values()[0]['student_age']
+23
+
+>>>queryset= Student.objects.all()
+>>> queryset.reverse()
+<QuerySet [<Student: Sherry Koch>, <Student: Sean Vasquez>, <Student: Richard Nelson>, <Student: Natasha Spencer>, <Student: Mr. Lucas Jones PhD>, <Student: Melissa Bryant>, <Student: Marvin Glenn>, <Student: Maria Wheeler>, <Student: Lori Gillespie>, <Student: Linda Moody>, <Student: Laurie Archer>, <Student: Lauren Ingram>, <Student: Laura Wagner>, <Student: Laura Myers DVM>, <Student: Kayla Horton>, <Student: Joshua Smith>, <Student: Joshua Case>, <Student: John Doyle>, <Student: Jason Davis>, <Student: Jane Gonzalez>, '...(remaining elements truncated)...']>
+
+>>>queryset
+<QuerySet [<Student: Amber Garcia>, <Student: Anuj Tiwari>, <Student: Austin Burke>, <Student: Brittany Bush>, <Student: Cole Smith>, <Student: Daniel Brooks>, <Student: Elizabeth Thompson>, <Student: Erika Collins>, <Student: Ernest Wyatt>, <Student: Gerald Fernandez>, <Student: Gregory Allen>, <Student: Jane Gonzalez>, <Student: Jason Davis>, <Student: John Doyle>, <Student: Joshua Case>, <Student: Joshua Smith>, <Student: Kayla Horton>, <Student: Laura Myers DVM>, <Student: Laura Wagner>, <Student: Lauren Ingram>, '...(remaining elements truncated)...']>
+
+>>>queryset= Student.objects.values_list('id', 'student_name')
+>>> queryset
+<QuerySet [(28, 'Amber Garcia'), (1, 'Anuj Tiwari'), (9, 'Austin Burke'), (15, 'Brittany Bush'), (18, 'Cole Smith'), (6, 'Daniel Brooks'), (7, 'Elizabeth Thompson'), (4, 'Erika Collins'), (2, 'Ernest Wyatt'), (25, 'Gerald Fernandez'), (24, 'Gregory Allen'), (10, 'Jane Gonzalez'), (14, 'Jason Davis'), (29, 'John Doyle'), (19, 'Joshua Case'), (21, 'Joshua Smith'), (20, 'Kayla Horton'), (26, 
+'Laura Myers DVM'), (3, 'Laura Wagner'), (22, 'Lauren Ingram'), '...(remaining elements truncated)...']>
+
+>>> queryset= Student.objects.get(id=40) 
+>>> queryset
+<Student: Brandy Cox>
+
+>>> from django.db.models import *
+>>> Student.objects.aggregate(Avg('student_age'))
+{'student_age__avg': 24.784313725490197}
+>>>Student.objects.aggregate(Min('student_age'))
+{'student_age__min': 20}
+>>> Student.objects.aggregate(Max('student_age'))
+{'student_age__max': 30}
+>>>> Student.objects.aggregate(Sum('student_age'))
+{'student_age__sum': 1264}
+
+>>>student = Student.objects.values('student_age').annotate(Count('student_age')) 
+>>> student
+<QuerySet [{'student_age': 20, 'student_age__count': 8}, {'student_age': 21, 'student_age__count': 2}, {'student_age': 22, 'student_age__count': 9}, {'student_age': 23, 'student_age__count': 2}, {'student_age': 24, 'student_age__count': 3}, {'student_age': 25, 'student_age__count': 4}, {'student_age': 26, 'student_age__count': 6}, {'student_age': 27, 'student_age__count': 3}, {'student_age': 28, 'student_age__count': 3}, {'student_age': 29, 'student_age__count': 5}, {'student_age': 30, 'student_age__count': 6}]>
+
+>>> student = Student.objects.values('department').annotate(Count('department'))
+>>> student
+<QuerySet [{'department': 1, 'department__count': 23}, {'department': 2, 'department__count': 28}]>
+
+
+>>>from OMR.seed import *
+>>> def Create_subject_marks(n):
+...     try:
+...         Student_objs=Student.objects.all()
+...         for student in Student_objs:
+...             subjects= Subject.objects.all()
+...             for subject in subjects:
+...                 SubjectMarks.objects.create(subject=subject,
+...                                             student=student,
+...                                             marks=random.randint(0,100))
+...     except Exception as e:
+...         print(e)
+...
+>>>Create_subject_marks(100)
+>>> exit()
